@@ -1,4 +1,5 @@
 ﻿using Asp.Net_WebApi_projekt.Models;
+using Asp.Net_WebApi_projekt.Services;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 
@@ -7,21 +8,32 @@ namespace Asp.Net_WebApi_projekt.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        private readonly IReadClientService _readClientService;
+        private readonly IReadSwimmingPoolService _readSwimmingPoolService;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger, 
+            IReadClientService readClientService,
+            IReadSwimmingPoolService readSwimmingPoolService)
         {
             _logger = logger;
+            _readClientService = readClientService;
+            _readSwimmingPoolService = readSwimmingPoolService;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            return View();
+            IndexVm model = new IndexVm(await _readSwimmingPoolService.GetAll());
+
+            return View(model);
         }
 
-        public IActionResult Privacy()
+        public async Task<ActionResult> SwimmingPool(int id)
         {
-            return View();
+            SwimmingPoolVM model = new SwimmingPoolVM(await _readSwimmingPoolService.GetById(id));
+
+            return View(model);
         }
+
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()

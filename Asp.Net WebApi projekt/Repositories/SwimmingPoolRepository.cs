@@ -13,6 +13,11 @@ namespace Asp.Net_WebApi_projekt.Repositories
             _swimmingPools = context.Set<SwimmingPool>();
         }
 
+        public void Add(SwimmingPool swimmingPool)
+        {
+            _swimmingPools.Add(swimmingPool);
+        }
+
         public Task<List<SwimmingPool>> GetAll()
         {
             return _swimmingPools.ToListAsync();

@@ -1,0 +1,19 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@model EditSwimmingPoolVm
+
+<form method="post">
+    @Html.HiddenFor(model => model.Id)
+    <div>
+        Name
+        @Html.EditorFor(model => model.Name)
+        @Html.ValidationMessageFor(model => model.Name)
+    </div>
+    <div>
+        Location
+        @Html.EditorFor(model => model.Location)
+        @Html.ValidationMessageFor(model => model.Location)
+    </div>
+    <button type="submit">Submit</button>
+</form>

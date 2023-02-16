@@ -6,5 +6,6 @@ namespace Asp.Net_WebApi_projekt.Repositories
     {
         Task<List<SwimmingPool>> GetAll();
         Task<SwimmingPool?> GetById(int id);
+        void Add(SwimmingPool swimmingPool);
     }
 }

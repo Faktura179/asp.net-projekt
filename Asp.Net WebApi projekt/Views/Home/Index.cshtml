@@ -1,8 +1,17 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
 }
+@model IndexVm
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+<table>
+    @foreach(var pool in Model.Pools)
+    {
+        <tr>
+            <td><a asp-controller="home" asp-action="swimmingpool" asp-route-id="@pool.Id">@pool.Name</a></td>
+            <td>@pool.Location</td>
+            <td><a asp-controller="Swimmingpool" asp-action="Edit" asp-route-id="@pool.Id">Edytuj</a></td>
+        </tr>
+    }
+</table>
+
+<a asp-controller="Swimmingpool" asp-action="Add">Dodaj</a>
