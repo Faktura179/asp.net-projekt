@@ -1,0 +1,55 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@model AddReservationVM
+
+<form method="post">
+    <div class="form-group">
+        <div>
+            <label for="ClientId" class="form-label">Klient</label>
+        </div>
+        @Html.DropDownListFor(model => model.ClientId, Model.ClientsList, new { @class = "form-control"})
+        <div class="text-danger">
+            @Html.ValidationMessageFor(model => model.ClientId)
+        </div>
+    </div>
+    <div class="form-group">
+        <div>
+            <label for="SwimmingTrackId" class="form-label">Tor</label>
+        </div>
+        @Html.DropDownListFor(model => model.SwimmingTrackId, Model.SwimmingTracksList, new { @class = "form-control"})
+        <div class="text-danger">
+            @Html.ValidationMessageFor(model => model.SwimmingTrackId)
+        </div>
+    </div>
+    <div class="form-group">
+        <div>
+            <label for="Price" class="form-label">Cena</label>
+        </div>
+        @Html.TextBoxFor(model => model.Price, new { @class = "form-control", type = "number", step = "0.01"})
+        <div class="text-danger">
+            @Html.ValidationMessageFor(model => model.Price)
+        </div>
+    </div>
+    <div class="form-group">
+        <div>
+            <label for="StartTime" class="form-label">Czas początku rezerwacji</label>
+        </div>
+        
+        @Html.TextBoxFor(x => x.StartTime, new { @class = "form-control", type = "datetime-local"})
+        <div class="text-danger">
+            @Html.ValidationMessageFor(model => model.StartTime)
+        </div>
+    </div>
+    <div class="form-group mb-2">
+        <div>
+            <label for="EndTime" class="form-label">Czas końca rezerwacji</label>
+        </div>
+        
+        @Html.TextBoxFor(model => model.EndTime, new { @class = "form-control", type = "datetime-local"})
+        <div class="text-danger">
+            @Html.ValidationMessageFor(model => model.EndTime)
+        </div>
+    </div>
+    <button type="submit" class="btn btn-primary">Zapisz</button>
+</form>

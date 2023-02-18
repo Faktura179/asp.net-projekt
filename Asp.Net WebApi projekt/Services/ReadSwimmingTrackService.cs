@@ -16,6 +16,11 @@ namespace Asp.Net_WebApi_projekt.Services
             _mapper = mapper;
         }
 
+        public async Task<List<SwimmingTrackDto>> GetAll()
+        {
+            return _mapper.Map<List<SwimmingTrack>, List<SwimmingTrackDto>>(await _unitOfWork.SwimmingTracks.GetAll());
+        }
+
         public async Task<SwimmingTrackDto> GetById(int id)
         {
             return _mapper.Map<SwimmingTrack, SwimmingTrackDto>(await _unitOfWork.SwimmingTracks.GetById(id));

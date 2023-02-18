@@ -57,7 +57,7 @@ namespace Asp.Net_WebApi_projekt.Controllers
             return View(model);
         }
 
-        [HttpPost]
+        [HttpPut]
         public async Task<ActionResult> Edit(EditSwimmingPoolVm model)
         {
             if (ModelState.IsValid)

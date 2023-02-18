@@ -15,7 +15,9 @@ namespace Asp.Net_WebApi_projekt.Repositories
 
         public Task<List<SwimmingTrack>> GetAll()
         {
-            return _swimmingTracks.ToListAsync();
+            return _swimmingTracks
+                .Include(x => x.SwimmingPool)
+                .ToListAsync();
         }
 
         public Task<SwimmingTrack?> GetById(int id)

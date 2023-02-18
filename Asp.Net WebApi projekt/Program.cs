@@ -1,4 +1,5 @@
 using Asp.Net_WebApi_projekt.Data;
+using Asp.Net_WebApi_projekt.ModelBinders;
 using Asp.Net_WebApi_projekt.Repositories;
 using Asp.Net_WebApi_projekt.Services;
 using Microsoft.AspNetCore.Identity;
@@ -16,7 +17,10 @@ builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = false)
     .AddRoles<IdentityRole>()
     .AddEntityFrameworkStores<ApplicationDbContext>();
-builder.Services.AddControllersWithViews();
+builder.Services.AddControllersWithViews(options =>
+{
+    options.ModelBinderProviders.Insert(0, new DecimalModelBinderProvider());
+});
 
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
@@ -26,6 +30,7 @@ builder.Services.AddScoped<IReadSwimmingPoolService, ReadSwimmingPoolService>();
 builder.Services.AddScoped<IWriteSwimmingPoolService, WriteSwimmingPoolService>();
 builder.Services.AddScoped<IReadSwimmingTrackService, ReadSwimmingTrackService>();
 builder.Services.AddScoped<IReadReservationService, ReadReservationService>();
+builder.Services.AddScoped<IWriteReservationService, WriteReservationService>();
 
 builder.Services.AddAuthorization((options) =>
 {

@@ -6,5 +6,7 @@ namespace Asp.Net_WebApi_projekt.Repositories
     {
         Task<List<Reservation>> GetAll();
         Task<Reservation?> GetById(int id);
+        Task Delete(int Id);
+        void Add(Reservation reservation);
     }
 }

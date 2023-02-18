@@ -25,5 +25,15 @@ namespace Asp.Net_WebApi_projekt.Repositories
                 .Include(x => x.Client)
                 .FirstOrDefaultAsync(r => r.Id == id);
         }
+
+        public Task Delete(int Id)
+        {
+            return _reservations.Where(x => x.Id == Id).ExecuteDeleteAsync();
+        }
+
+        public void Add(Reservation reservation)
+        {
+            _reservations.Add(reservation);
+        }
     }
 }

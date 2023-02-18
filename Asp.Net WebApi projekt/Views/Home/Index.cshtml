@@ -3,7 +3,13 @@
 }
 @model IndexVm
 
-<table>
+<h3>Baseny</h3>
+<table class="table table-bordered table-striped">
+    <tr>
+        <th>Nazwa</th>
+        <th>Lokalizacja</th>
+        <th>Akcje</th>
+    </tr>
     @foreach(var pool in Model.Pools)
     {
         <tr>
@@ -14,4 +20,10 @@
     }
 </table>
 
-<a asp-controller="Swimmingpool" asp-action="Add">Dodaj</a>
+<div>
+    <a asp-controller="Swimmingpool" asp-action="Add">Dodaj basen</a>
+</div>
+
+<div>
+    <a asp-controller="Reservation" asp-action="Add">Dodaj rezerwację</a>
+</div>

@@ -4,15 +4,23 @@
 @model AddSwimmingPoolVm
 
 <form method="post">
-    <div>
-        Name
-        @Html.EditorFor(model => model.Name)
-        @Html.ValidationMessageFor(model => model.Name)
+    <div class="form-group">
+        <div>
+            <label for="Name" class="form-label">Nazwa</label>
+        </div>
+        @Html.TextBoxFor(model => model.Name, new { @class = "form-control"})
+        <div class="text-danger">
+            @Html.ValidationMessageFor(model => model.Name)
+        </div>
     </div>
-    <div>
-        Location
-        @Html.EditorFor(model => model.Location)
-        @Html.ValidationMessageFor(model => model.Location)
+    <div class="form-group mb-2">
+        <div>
+            <label for="Location" class="form-label">Lokacja</label>
+        </div>
+        @Html.TextBoxFor(model => model.Location, new { @class = "form-control"})
+        <div class="text-danger">
+            @Html.ValidationMessageFor(model => model.Location)
+        </div>
     </div>
-    <button type="submit">Submit</button>
+    <button type="submit" class="btn btn-primary">Zapisz</button>
 </form>
