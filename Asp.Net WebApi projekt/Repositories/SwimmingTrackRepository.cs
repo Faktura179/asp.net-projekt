@@ -22,6 +22,8 @@ namespace Asp.Net_WebApi_projekt.Repositories
         {
             return _swimmingTracks
                 .Include(x => x.SwimmingPool)
+                .Include(x => x.Reservations)
+                .Include("Reservations.Client")
                 .FirstOrDefaultAsync(x => x.Id == id);
         }
     }

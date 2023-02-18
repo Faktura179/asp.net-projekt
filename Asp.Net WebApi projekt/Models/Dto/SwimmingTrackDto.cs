@@ -11,5 +11,7 @@ namespace Asp.Net_WebApi_projekt.Models.Dto
         public int SwimmingPoolId { get; set; }
 
         public SwimmingPoolDto SwimmingPool { get; set; }
+
+        public List<ReservationDto> Reservations { get; set; }
     }
 }

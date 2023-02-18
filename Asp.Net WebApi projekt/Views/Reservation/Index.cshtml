@@ -1,0 +1,25 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@model ReservationVM
+
+<div>
+    <div>
+        Client: @Model.Reservation.Client.FirstName @Model.Reservation.Client.LastName
+    </div>
+    <div>
+        SwimmingPool: @Model.Reservation.SwimmingTrack.SwimmingPool.Name
+    </div>
+    <div>
+        Track: @Model.Reservation.SwimmingTrack.Name
+    </div>
+    <div>
+        Price: @Model.Reservation.Price.ToString("C2")
+    </div>
+    <div>
+        From: @Model.Reservation.StartTime.ToString("yyyy-MM-dd HH:mm")
+    </div>
+    <div>
+        To: @Model.Reservation.EndTime.ToString("yyyy-MM-dd HH:mm")
+    </div>
+</div>

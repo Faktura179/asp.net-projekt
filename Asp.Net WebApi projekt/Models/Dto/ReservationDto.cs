@@ -8,5 +8,8 @@
         public decimal Price { get; set; }
         public DateTime StartTime { get; set; }
         public DateTime EndTime { get; set; }
+
+        public SwimmingTrackDto SwimmingTrack { get; set; }
+        public ClientDto Client { get; set; }
     }
 }

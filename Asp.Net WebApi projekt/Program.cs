@@ -25,6 +25,7 @@ builder.Services.AddScoped<IReadClientService, ReadClientService>();
 builder.Services.AddScoped<IReadSwimmingPoolService, ReadSwimmingPoolService>();
 builder.Services.AddScoped<IWriteSwimmingPoolService, WriteSwimmingPoolService>();
 builder.Services.AddScoped<IReadSwimmingTrackService, ReadSwimmingTrackService>();
+builder.Services.AddScoped<IReadReservationService, ReadReservationService>();
 
 builder.Services.AddAuthorization((options) =>
 {

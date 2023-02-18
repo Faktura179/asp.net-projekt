@@ -20,7 +20,10 @@ namespace Asp.Net_WebApi_projekt.Repositories
 
         public Task<Reservation?> GetById(int id)
         {
-            return _reservations.FirstOrDefaultAsync(r => r.Id == id);
+            return _reservations
+                .Include(x => x.SwimmingTrack.SwimmingPool)
+                .Include(x => x.Client)
+                .FirstOrDefaultAsync(r => r.Id == id);
         }
     }
 }
