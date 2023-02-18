@@ -7,7 +7,6 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Asp.Net_WebApi_projekt.Controllers
 {
-    [Authorize(Policy = "Administrator")]
     public class SwimmingPoolController : Controller
     {
         private readonly IWriteSwimmingPoolService _writeSwimmingPoolService;
@@ -26,6 +25,7 @@ namespace Asp.Net_WebApi_projekt.Controllers
             return View(model);
         }
 
+        [Authorize(Policy = "Administrator")]
         public IActionResult Add()
         {
             AddSwimmingPoolVm model = new AddSwimmingPoolVm();
@@ -33,6 +33,7 @@ namespace Asp.Net_WebApi_projekt.Controllers
             return View(model);
         }
 
+        [Authorize(Policy = "Administrator")]
         [HttpPost]
         public async Task<ActionResult> Add(AddSwimmingPoolVm model)
         {
@@ -50,6 +51,7 @@ namespace Asp.Net_WebApi_projekt.Controllers
             return View(model);
         }
 
+        [Authorize(Policy = "Administrator")]
         public async Task<IActionResult> Edit(int id)
         {
             EditSwimmingPoolVm model = new EditSwimmingPoolVm(await _readSwimmingPoolService.GetById(id));
@@ -57,6 +59,7 @@ namespace Asp.Net_WebApi_projekt.Controllers
             return View(model);
         }
 
+        [Authorize(Policy = "Administrator")]
         [HttpPut]
         public async Task<ActionResult> Edit(EditSwimmingPoolVm model)
         {

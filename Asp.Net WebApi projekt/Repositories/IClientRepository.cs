@@ -6,5 +6,7 @@ namespace Asp.Net_WebApi_projekt.Repositories
     {
         Task<List<Client>> GetAll();
         Task<Client?> GetById(int id);
+        Task<int> GetPagesCount();
+        Task<List<Client>> GetPaginated(int page);
     }
 }

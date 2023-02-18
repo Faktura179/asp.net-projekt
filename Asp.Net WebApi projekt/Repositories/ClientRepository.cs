@@ -8,6 +8,7 @@ namespace Asp.Net_WebApi_projekt.Repositories
 
     {
         private DbSet<Client> _clients;
+        private int _pageSize = 3;
 
         public ClientRepository(ApplicationDbContext context)
         {
@@ -22,6 +23,16 @@ namespace Asp.Net_WebApi_projekt.Repositories
         public Task<Client?> GetById(int id)
         {
             return _clients.FirstOrDefaultAsync(c => c.Id == id);
+        }
+
+        public async Task<int> GetPagesCount()
+        {
+            return (int)Math.Ceiling((double)await _clients.CountAsync()/(double)_pageSize);
+        }
+
+        public Task<List<Client>> GetPaginated(int page)
+        {
+            return _clients.Skip(_pageSize * (page-1)).Take(_pageSize).ToListAsync();
         }
     }
 }

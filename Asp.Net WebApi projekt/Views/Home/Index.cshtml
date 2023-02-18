@@ -3,6 +3,8 @@
 }
 @model IndexVm
 
+<partial name="_ClientsPartial.cshtml" for="ClientsVM">
+
 <h3>Baseny</h3>
 <table class="table table-bordered table-striped">
     <tr>
@@ -27,3 +29,22 @@
 <div>
     <a asp-controller="Reservation" asp-action="Add">Dodaj rezerwację</a>
 </div>
+
+<script>
+    function onClientsPartialLoad(){
+        $(".page-link").on("click", function(e){
+            e.preventDefault();
+            const page = $(this).data("page");
+
+            $.ajax({
+                url: "/home/ClientsPartial",
+                method: "get",
+                data: { page: page }
+            }).done((data) => {
+                $(".clientsTable").html(data);
+                onClientsPartialLoad();
+            })
+        })
+    }
+    onClientsPartialLoad();
+</script>

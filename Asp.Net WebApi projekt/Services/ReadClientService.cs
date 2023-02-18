@@ -20,5 +20,12 @@ namespace Asp.Net_WebApi_projekt.Services
         {
             return _mapper.Map<List<Client>, List<ClientDto>>(await _unitOfWork.Clients.GetAll());
         }
+
+        public async Task<(List<ClientDto> clients, int totalPages, int currentPage)> GetPaginated(int page)
+        {
+            return (_mapper.Map<List<Client>, List<ClientDto>>(await _unitOfWork.Clients.GetPaginated(page)), 
+                await _unitOfWork.Clients.GetPagesCount(),
+                page);
+        }
     }
 }

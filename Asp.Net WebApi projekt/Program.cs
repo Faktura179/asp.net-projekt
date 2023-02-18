@@ -67,6 +67,9 @@ Task.Run(async () =>
 {
     using (var scope = app.Services.CreateScope())
     {
+        var db = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
+        db.Database.Migrate();
+
         var userManager = scope.ServiceProvider.GetRequiredService<UserManager<IdentityUser>>();
         var roleManager = scope.ServiceProvider.GetRequiredService<RoleManager<IdentityRole>>();
         bool x = await roleManager.RoleExistsAsync("Administrator");
@@ -93,6 +96,20 @@ Task.Run(async () =>
             if (chkUser.Succeeded)
             {
                 var result1 = await userManager.AddToRoleAsync(user, "Administrator");
+            }
+
+            var roleNormal = new IdentityRole();
+            roleNormal.Name = "User";
+            await roleManager.CreateAsync(roleNormal);
+
+            var normalUser = new IdentityUser();
+            normalUser.UserName = "normalUser@example.com";
+            normalUser.Email = "normalUser@example.com";
+
+            IdentityResult chkNormalUser = await userManager.CreateAsync(normalUser, userPWD);
+            if (chkNormalUser.Succeeded)
+            {
+                var result1 = await userManager.AddToRoleAsync(normalUser, "User");
             }
         }
     }

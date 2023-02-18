@@ -22,11 +22,20 @@ namespace Asp.Net_WebApi_projekt.Controllers
 
         public async Task<IActionResult> Index()
         {
-            IndexVm model = new IndexVm(await _readSwimmingPoolService.GetAll());
+            var paginationResult = await _readClientService.GetPaginated(1);
+            ClientsPartialVM clientsVm = new ClientsPartialVM(paginationResult.clients, paginationResult.totalPages, paginationResult.currentPage);
+            IndexVm model = new IndexVm(await _readSwimmingPoolService.GetAll(), clientsVm);
 
             return View(model);
         }
 
+        public async Task<ActionResult> ClientsPartial(int page)
+        {
+            var paginationResult = await _readClientService.GetPaginated(page);
+            ClientsPartialVM model = new ClientsPartialVM(paginationResult.clients, paginationResult.totalPages, paginationResult.currentPage);
+
+            return PartialView("_ClientsPartial", model);
+        }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()

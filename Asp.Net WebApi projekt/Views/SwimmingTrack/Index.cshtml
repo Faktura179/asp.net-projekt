@@ -24,6 +24,7 @@
             <th>Cena</th>
             <th>Od</th>
             <th>Do</th>
+            <th>Akcje</th>
         </tr>
         @foreach (var reservation in Model.SwimmingTrack.Reservations)
         {
@@ -38,9 +39,28 @@
                     @reservation.StartTime.ToString("yyyy-MM-dd HH:mm")
                 </td>
                 <td>
-                    @reservation.StartTime.ToString("yyyy-MM-dd HH:mm")
+                    @reservation.EndTime.ToString("yyyy-MM-dd HH:mm")
+                </td>
+                <td>
+                    <button class="deleteReservation btn btn-danger" data-reservationid="@reservation.Id">Usuń</button>
                 </td>
             </tr>
         }
     </table>
 </div>
+
+@section Scripts {
+<script>
+    $(".deleteReservation").on("click", function(){
+        const reservationId = $(this).data("reservationid");
+
+        $.ajax({
+            url: "/reservation/delete",
+            method: "delete",
+            data: { id: reservationId }
+        }).done(() => {
+            location.reload();
+        })
+    })
+</script>
+}
