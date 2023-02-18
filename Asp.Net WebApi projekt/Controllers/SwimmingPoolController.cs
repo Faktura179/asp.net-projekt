@@ -19,6 +19,13 @@ namespace Asp.Net_WebApi_projekt.Controllers
             _readSwimmingPoolService = readSwimmingPoolService;
         }
 
+        public async Task<ActionResult> Index(int id)
+        {
+            SwimmingPoolVM model = new SwimmingPoolVM(await _readSwimmingPoolService.GetById(id));
+
+            return View(model);
+        }
+
         public IActionResult Add()
         {
             AddSwimmingPoolVm model = new AddSwimmingPoolVm();

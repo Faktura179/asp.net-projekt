@@ -27,13 +27,6 @@ namespace Asp.Net_WebApi_projekt.Controllers
             return View(model);
         }
 
-        public async Task<ActionResult> SwimmingPool(int id)
-        {
-            SwimmingPoolVM model = new SwimmingPoolVM(await _readSwimmingPoolService.GetById(id));
-
-            return View(model);
-        }
-
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()

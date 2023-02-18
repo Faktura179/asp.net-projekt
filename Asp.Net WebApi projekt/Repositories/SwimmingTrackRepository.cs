@@ -20,7 +20,9 @@ namespace Asp.Net_WebApi_projekt.Repositories
 
         public Task<SwimmingTrack?> GetById(int id)
         {
-            return _swimmingTracks.FirstOrDefaultAsync(x => x.Id == id);
+            return _swimmingTracks
+                .Include(x => x.SwimmingPool)
+                .FirstOrDefaultAsync(x => x.Id == id);
         }
     }
 }
