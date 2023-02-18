@@ -60,7 +60,7 @@ namespace Asp.Net_WebApi_projekt.Controllers
         }
 
         [Authorize(Policy = "Administrator")]
-        [HttpPut]
+        [HttpPost]
         public async Task<ActionResult> Edit(EditSwimmingPoolVm model)
         {
             if (ModelState.IsValid)
