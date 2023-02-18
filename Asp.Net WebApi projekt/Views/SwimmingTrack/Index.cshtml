@@ -42,7 +42,10 @@
                     @reservation.EndTime.ToString("yyyy-MM-dd HH:mm")
                 </td>
                 <td>
-                    <button class="deleteReservation btn btn-danger" data-reservationid="@reservation.Id">Usuń</button>
+                    @if (User.IsInRole("Administrator"))
+                    {
+                        <button class="deleteReservation btn btn-danger" data-reservationid="@reservation.Id">Usuń</button>
+                    }
                 </td>
             </tr>
         }
