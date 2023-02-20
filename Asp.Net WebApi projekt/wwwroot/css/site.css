@@ -1,5 +1,11 @@
 html {
-  font-size: 14px;
+    font-size: 14px;
+    height: 100%;
+}
+
+body {
+    min-height: 100%;
+    background: #f2fbff;
 }
 
 @media (min-width: 768px) {
@@ -17,6 +23,92 @@ html {
   min-height: 100%;
 }
 
-body {
-  margin-bottom: 60px;
+nav.navbar {
+    background: #47B5FF;
+    color: #fff !important;
+}
+
+    nav.navbar .text-dark, nav.navbar .navbar-brand, nav.navbar.navbar-light .navbar-nav .nav-link {
+        color: #fff !important;
+    }
+
+* {
+    border-color: #06283D;
+}
+
+:root {
+    --primary: #00337C;
+    --secondary: #1C82AD;
+    --success: #28a745;
+    --info: #17a2b8;
+    --warning: #ffc107;
+    --danger: #dc3545;
+    --light: #f8f9fa;
+    --dark: #343a40;
+}
+
+.text-muted {
+    --bs-text-opacity: 1;
+    color: #08314a !important;
+}
+
+footer {
+    padding: 15px 0;
+    background: #47B5FF;
+    color: #fff !important;
+}
+
+.border-top {
+    border-top: 1px solid #256D85 !important;
+}
+
+.table {
+    background: #fff;
+    border-collapse: collapse;
+    border-radius: 1em;
+    overflow: hidden;
+    border: 1px solid #256D85 !important;
+    box-shadow: #47B5FF 0px 0px 7px -5px;
+}
+
+a {
+    text-decoration: none;
+    color: #1759bc;
+}
+
+.table-striped > tbody > tr:nth-of-type(odd) {
+    --bs-table-accent-bg: #dffffc;
+    color: var(--bs-table-striped-color);
+}
+
+.page-link {
+    color: #149efb;
+}
+
+.page-item.active .page-link {
+    background-color: #149efb;
+    border-color: #149efb;
+}
+
+.btn-primary {
+    color: #fff;
+    background-color: #149efb;
+    border-color: #149efb;
+}
+
+form.form-container {
+    background: #fff;
+    padding: 15px;
+    border-radius: 15px;
+    box-shadow: #47B5FF 0px 0px 7px -5px;
+}
+
+.table-bordered > :not(caption) > * {
+    border-color: #d7eaff;
+}
+
+.nav-pills .nav-link.active {
+    color: #fff;
+    background-color: #149efb;
+    border-color: #149efb;
 }
